@@ -51,7 +51,10 @@ export const PostsService = {
           headline: "Vice President & Board Member for Digital Services",
           avatar: "https://media.licdn.com/dms/image/v2/D4D03AQGC7A8pRn7eYg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1684753490004?e=1758153600&v=beta&t=kNF5BzPEU7GDEKGpJkSgejTX7JlvUcrJ5UFN0NfUzUI",
           verified: true,
-          timeAgo: "3h"
+          timeAgo: "3h",
+          isPremium: true,
+          isConnected: true,
+          connectionDegree: "1st"
         },
         content: "I've been reflecting on the latest advancements in AI and how digital services are evolving. The potential for automation and intelligent solutions to streamline our workflows is incredible. What are your thoughts on how much human effort we can realistically save while maintaining quality and innovation? The intersection of AI and digital transformation continues to fascinate me. #AI #DigitalServices #Innovation",
         likes: 147,
@@ -67,7 +70,10 @@ export const PostsService = {
           name: "Muhammed Gouda",
           headline: "Software Expert and Leader",
           avatar: "https://media.licdn.com/dms/image/v2/D4D03AQGQA6NII7cKEg/profile-displayphoto-shrink_400_400/B4DZPGVTgPGgAg-/0/1734199295570?e=1758153600&v=beta&t=Og-WUZjDQ0Yc7uxs1c0KCmtLUCGdv6z3wyxdytwAarY",
-          timeAgo: "5h"
+          timeAgo: "5h",
+          isPremium: true,
+          isConnected: true,
+          connectionDegree: "1st"
         },
         content: "سألت الـ ChatGPT: \"عندي bug مش عارف أحله من 3 ساعات، ممكن تساعدني؟\" 🐛\n\nرد عليا: \"Have you tried console.log('IT WORKS')?\" \n\nقولت له: \"لا، جربت كل حاجة تقريباً\"\n\nقالي: \"Then try console.log('IT STILL DOESNT WORK') 🤷‍♂️\"\n\nبعدها بربع ساعة لقيت المشكلة... كان ناقصني semicolon واحدة بس! 😭\n\nسألته: \"ليه مقولتليش من الأول؟\"\n\nرد: \"Where's the fun in that? 😈\"\n\n#DebuggingLife #ChatGPT #مطورين_مصر #AI_Trolling",
         likes: 89,
@@ -123,6 +129,14 @@ export const ConnectionsService = {
         headline: "CEO of OpenAI",
         avatar: "https://media.wired.com/photos/655cf58564de22446963f396/1:1/w_1498,h_1498,c_limit/Sam-Altman-OpenAI-Return-Business-1258197415.jpg",
         mutualConnections: 25
+      },
+      {
+        id: 3,
+        name: "Ahmed Hassan",
+        type: "person", 
+        headline: "Director of Product Management | Digital Transformation Leader",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        mutualConnections: 15
       }
     ];
   },

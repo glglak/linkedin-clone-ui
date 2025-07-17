@@ -127,10 +127,19 @@ const RightSidebar = () => {
           )}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="font-medium text-sm text-gray-900 truncate cursor-pointer hover:underline"
-             onClick={() => handleConnectionClick(connection.id)}>
-            {connection.name}
-          </p>
+          <div className="flex items-center">
+            <p className="font-medium text-sm text-gray-900 truncate cursor-pointer hover:underline"
+               onClick={() => handleConnectionClick(connection.id)}>
+              {connection.name}
+            </p>
+            {connection.isPremium && (
+              <div className="ml-1 flex-shrink-0">
+                <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <image href="https://static.licdn.com/aero-v1/sc/h/7lputkpzv6s224ks0n6c7h2qo" width="24" height="24"/>
+                </svg>
+              </div>
+            )}
+          </div>
           <p className="text-xs text-gray-600 line-clamp-2 mt-0.5">
             {connection.type === 'company' 
               ? `Company • ${connection.category}`
@@ -138,22 +147,32 @@ const RightSidebar = () => {
             }
           </p>
           <p className="text-xs text-gray-500 mt-0.5">
-            1st
+            {connection.connectionDegree || `${connection.mutualConnections} mutual connections`}
           </p>
-          <button 
-            onClick={() => handleFollowClick(connection.id)}
-            disabled={isFollowing}
-            className={`mt-2 flex items-center border rounded-full px-4 py-1 text-xs transition-colors ${
-              isFollowing 
-                ? 'text-gray-500 border-gray-300 bg-gray-100 cursor-not-allowed'
-                : 'text-gray-700 border-gray-400 hover:bg-gray-50 hover:border-gray-600'
-            }`}
-          >
-            <svg className="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-              <path fill="currentColor" d="M8 1a7 7 0 100 14A7 7 0 008 1zM4.5 8a.5.5 0 01.5-.5h2.5V5a.5.5 0 011 0v2.5H11a.5.5 0 010 1H8.5V11a.5.5 0 01-1 0V8.5H5a.5.5 0 01-.5-.5z"/>
-            </svg>
-            {isFollowing ? 'Following' : 'Follow'}
-          </button>
+          {!connection.isConnected && (
+            <button 
+              onClick={() => handleFollowClick(connection.id)}
+              disabled={isFollowing}
+              className={`mt-2 flex items-center justify-center border rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                isFollowing 
+                  ? 'text-gray-500 border-gray-300 bg-gray-100 cursor-not-allowed'
+                  : 'text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-gray-400 hover:shadow-sm'
+              }`}
+            >
+              <svg className="w-4 h-4 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M8 1a7 7 0 100 14A7 7 0 008 1zM4.5 8a.5.5 0 01.5-.5h2.5V5a.5.5 0 011 0v2.5H11a.5.5 0 010 1H8.5V11a.5.5 0 01-1 0V8.5H5a.5.5 0 01-.5-.5z"/>
+              </svg>
+              {isFollowing ? 'Following' : 'Follow'}
+            </button>
+          )}
+          {connection.isConnected && (
+            <button 
+              onClick={() => console.log('Send message to', connection.id)}
+              className="mt-2 flex items-center border rounded-full px-4 py-1 text-xs transition-colors text-blue-600 border-blue-600 hover:bg-blue-50"
+            >
+              Message
+            </button>
+          )}
         </div>
       </div>
     );

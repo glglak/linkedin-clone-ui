@@ -75,7 +75,7 @@ const Post = ({ post, onLike, onComment, onShare }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-300 mb-2">
+    <div className="bg-white rounded-lg border border-gray-300">
       <div className="p-4">
         {/* Post Header */}
         <div className="flex items-start justify-between mb-3">
@@ -102,14 +102,24 @@ const Post = ({ post, onLike, onComment, onShare }) => {
                     <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                 )}
+                {post.author.isPremium && (
+                  <div className="flex-shrink-0">
+                    <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <image href="https://static.licdn.com/aero-v1/sc/h/7lputkpzv6s224ks0n6c7h2qo" width="24" height="24"/>
+                    </svg>
+                  </div>
+                )}
                 <span className="text-gray-500">•</span>
-                <span className="text-gray-600 text-sm">2nd</span>
-                {!isFollowing && (
+                <span className="text-gray-600 text-sm">{post.author.connectionDegree || '2nd'}</span>
+                {!post.author.isConnected && !isFollowing && (
                   <button 
                     onClick={handleFollow}
-                    className="text-blue-600 text-sm font-medium hover:underline cursor-pointer ml-2"
+                    className="text-blue-600 text-sm font-medium hover:underline cursor-pointer ml-2 flex items-center"
                   >
-                    <span className="text-blue-600">➕</span> <span className="text-blue-600">Follow</span>
+                    <svg className="w-3 h-3 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                      <path fill="#0a66c2" d="M8 0a8 8 0 100 16A8 8 0 008 0zM4 8a.5.5 0 01.5-.5h3V4a.5.5 0 011 0v3.5h3a.5.5 0 010 1h-3V12a.5.5 0 01-1 0V8.5h-3A.5.5 0 014 8z"/>
+                    </svg>
+                    <span className="text-blue-600">Follow</span>
                   </button>
                 )}
               </div>
@@ -131,7 +141,7 @@ const Post = ({ post, onLike, onComment, onShare }) => {
         </div>
 
         {/* Post Content */}
-        <div className="text-sm text-gray-900 mb-4 leading-5">
+        <div className="text-sm text-gray-900 mb-4 leading-normal">
           {displayContent}
           {shouldTruncate && (
             <button 

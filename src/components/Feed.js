@@ -88,7 +88,7 @@ const Feed = () => {
   );
 
   const LoadingPost = () => (
-    <div className="bg-white rounded-lg border border-gray-300 mb-2 p-4 animate-pulse">
+    <div className="bg-white rounded-lg border border-gray-300 p-4 animate-pulse">
       <div className="flex items-start space-x-3 mb-4">
         <div className="w-12 h-12 bg-gray-200 rounded-full"></div>
         <div className="flex-1">
@@ -149,7 +149,7 @@ const Feed = () => {
       <SortDropdown />
 
       {/* Posts Feed */}
-      <div className="space-y-0">
+      <div className="space-y-1">
         {posts.map((post) => (
           <Post
             key={post.id}
