@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import LeftSidebar from './LeftSidebar';
-import CreatePost from './CreatePost';
-import Post from './Post';
+import Feed from './Feed';
 import RightSidebar from './RightSidebar';
 
 const LinkedInClone = () => {
@@ -20,8 +19,7 @@ const LinkedInClone = () => {
 
           {/* Main Feed */}
           <div className="lg:col-span-6">
-            <CreatePost />
-            <Post />
+            <Feed />
           </div>
 
           {/* Right Sidebar */}
